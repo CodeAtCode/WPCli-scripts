@@ -1,7 +1,9 @@
 #!/usr/bin/python
 
-# Generate the list of tags
+# Generate the list of comments
 # wp comment list --fields=ID,comment_date --format=json > comments.json
+
+# This script require a parameter that is the year
 
 import json
 import os
