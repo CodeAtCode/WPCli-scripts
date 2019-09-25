@@ -11,6 +11,7 @@ import datetime
 import sys
 
 i = 0
+ids = ''
 with open('comments.json') as f:
     comments = json.load(f)
     print('Found ' + str(len(comments)) + ' comments')
@@ -19,6 +20,8 @@ with open('comments.json') as f:
         date = datetime.datetime.strptime(comment['comment_date'], '%Y-%m-%d %H:%M:%S')
         if date.year == int(sys.argv[1]):
             i += 1
-            os.system("wp comment delete " + comment['comment_ID'])
+            ids += comment['comment_ID'] + ' '
+
+os.system("wp comment delete " + ids + ' --force')
 
 print('Removed ' + str(i) + ' comments')
